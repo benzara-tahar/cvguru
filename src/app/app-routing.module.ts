@@ -20,13 +20,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('./features/home/home.module').then((m) => m.HomeModule),
       },
-    ],
-  },
-  // connected user layout
-  {
-    path: 'app',
-    component: UserLayoutComponent,
-    children: [
       {
         path: 'cvBuilder',
         loadChildren: () =>
@@ -34,6 +27,13 @@ const routes: Routes = [
             (m) => m.CvBuilderModule
           ),
       },
+    ],
+  },
+  // connected user layout
+  {
+    path: 'app',
+    component: UserLayoutComponent,
+    children: [
       {
         path: 'payment',
         loadChildren: () =>
