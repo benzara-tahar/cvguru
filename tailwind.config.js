@@ -18,23 +18,8 @@ module.exports = {
   theme: {
     colors: {
       ...defaultTheme.colors,
-      'crossrail-gray-pale': '#707070',
-      'crossrail-teal': '#2cfffe',
-      'crossrail-teal-dark': '#16807f',
-      'crossrail-teal-light': '#2cfffe',
-      'crossrail-negative': '#fd0d1b',
-      'crossrail-negative-dark': '#800008',
-      'crossrail-negative-light': '#ff000f',
-      'crossrail-mid': '#ffea34',
-      'crossrail-mid-dark': '#ff9900',
-      'crossrail-mid-light': '#ffea34',
-      'crossrail-positive': '#29fd48',
-      'crossrail-positive-dark': '#0b4c4e',
-      'crossrail-positive-light': '#41f22f',
-      'crossrail-open': '#205bdb',
-      'crossrail-physical': '#153dbf',
-      'crossrail-evidence': '#020e8a',
-      'crossrail-closed': '#76777b',
+      'cvguru-green': '#2dc46a',
+    
     },
     fontSize: {
       xs: '.75rem',
