@@ -31,10 +31,10 @@ export class DarkThemeToggleComponent implements OnInit {
   toggleDarkTheme() {
     if (this.theme === 'light') {
       localStorage.setItem('theme', 'dark');
-      document.body.classList.add('dark');
+      document.documentElement.classList.add('dark');
       this.theme = 'dark';
     } else {
-      document.body.classList.remove('dark');
+      document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
       this.theme = 'light';
     }
