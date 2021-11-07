@@ -8,10 +8,11 @@ module.exports = {
   important: true,
   purge: {
     enabled: process.env.TAILWIND_MODE === 'build',
+    // enabled: true,
     content: ['./src/**/*.{html,scss,ts}'],
     options: {
       safelist: {
-        deep: [/^theme/, /^dark/],
+        deep: [],
       },
     },
   },
