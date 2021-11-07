@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cvgurru": {
+      "hosting": {
+        "cvguru": [
+          "cvgurru"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cvgurru"
+  }
+}
