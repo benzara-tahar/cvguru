@@ -11,7 +11,7 @@ module.exports = {
     content: ['./src/**/*.{html,scss,ts}'],
     options: {
       safelist: {
-        deep: [/^theme/, /^dark/, /^mat/],
+        deep: [/^theme/, /^dark/],
       },
     },
   },
@@ -32,7 +32,19 @@ module.exports = {
             '700': '#229350', 
             '800': '#1b7640', 
             '900': '#166034'
-        }
+        },
+        'dairy-cream': {
+          '50': '#FFFFFF',
+          '100': '#FFFFFF',
+          '200': '#FFFFFF',
+          '300': '#FFFFFF',
+          '400': '#FEF7EC',
+          '500': '#FBE7C6',
+          '600': '#F7D192',
+          '700': '#F4BB5D',
+          '800': '#F0A529',
+          '900': '#D2880F'
+        },
     
     },
    
