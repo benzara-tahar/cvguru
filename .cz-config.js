@@ -1,4 +1,4 @@
-dule.exports = {
+module.exports = {
     types: [
       { value: ':sparkles: feat', name: '✨ feat:\tAdding a new feature' },
       { value: ':bug: fix', name: '🐛 fix:\tFixing a bug' },
@@ -38,12 +38,13 @@ dule.exports = {
     scopes: [
       { name: 'ui' },
       { name: 'api' },
-      { name: 'home' },
+      { name: 'auth' },
       { name: 'cv-builder' },
+      { name: 'home' },
       { name: 'contact' },
       { name: 'pricing' },
       { name: 'profile' },
-      { name: 'settings' },
+      { name: 'payment' },
     ],
   
     scopeOverrides: {
