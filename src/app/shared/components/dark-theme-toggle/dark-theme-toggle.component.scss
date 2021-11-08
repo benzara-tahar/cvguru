@@ -1,5 +1,5 @@
 .mode {
-  background-color: rgba(255, 255, 255, 0.192);
+  background-color: rgba(104, 104, 104, 0.192);
   border-radius: 30px;
   width: 58px;
   position: relative;
@@ -37,7 +37,7 @@
 
 .dark-mode {
   .mode {
-    background-color: rgba(0, 0, 0, 0.171);
+    background-color: rgba(0, 0, 0, 0.288);
   }
   .mode:after {
     transform: translateX(-24px);

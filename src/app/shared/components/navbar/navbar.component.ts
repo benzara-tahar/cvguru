@@ -11,6 +11,8 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 })
 export class NavbarComponent implements OnInit {
   user$: Observable<User | null> = this.auth.user$;
+
+  mobileNavVisisble: boolean = false;
   constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
