@@ -26,11 +26,11 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  public readonly user: Observable<User | null> = EMPTY;
+  public readonly user$: Observable<User | null> = EMPTY;
 
   constructor(@Optional() private auth: Auth, private router: Router) {
     if (auth) {
-      this.user = authState(this.auth);
+      this.user$ = authState(this.auth);
     }
   }
 

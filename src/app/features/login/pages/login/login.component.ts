@@ -13,6 +13,13 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   firebaseErrorMessage: string;
 
+  get email() {
+    return this.loginForm.get('email');
+  }
+  get password() {
+    return this.loginForm.get('password');
+  }
+
   constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -25,10 +32,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   loginUser() {
+    console.log(
+      '%cMyProject%cline:31%cvar',
+      'color:#fff;background:#ee6f57;padding:3px;border-radius:2px',
+      'color:#fff;background:#1f3c88;padding:3px;border-radius:2px',
+      'color:#fff;background:rgb(153, 80, 84);padding:3px;border-radius:2px',
+      this.loginForm.value
+    );
     if (this.loginForm.invalid) return;
 
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
+
     this.authService
       .loginWithEmailAndPassword(email, password)
       .then((result) => {
@@ -36,25 +51,33 @@ export class LoginComponent implements OnInit {
         if (result == null) {
           // null is success, false means there was an error
           console.log('logging in...');
-          this.router.navigate(['/dashboard']); // when the user is logged in, navigate them to dashboard
+          this.router.navigate(['/']); // when the user is logged in, navigate them to dashboard
         } else if (result.user == null) {
           console.log('login error', result);
           this.firebaseErrorMessage = 'something wrong';
         }
+      })
+      .catch((error) => {
+        console.log('login error', error);
       });
   }
 
   async signInWithGoogle() {
-    await this.authService.loginWithGoogle().then((result) => {
-      console.log(result);
-      if (result == null) {
-        // null is success, false means there was an error
-        console.log('logging in...');
-        this.router.navigate(['/dashboard']); // when the user is logged in, navigate them to dashboard
-      } else if (result.user == null) {
-        console.log('login error', result);
-        this.firebaseErrorMessage = 'something wrong';
-      }
-    });
+    await this.authService
+      .loginWithGoogle()
+      .then((result) => {
+        console.log(result);
+        if (result.user) {
+          // null is success, false means there was an error
+          console.log('logging in...');
+          this.router.navigate(['/']); // when the user is logged in, navigate them to dashboard
+        } else if (result.user == null) {
+          console.log('login error', result);
+          this.firebaseErrorMessage = 'something wrong';
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }

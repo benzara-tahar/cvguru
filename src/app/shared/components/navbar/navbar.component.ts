@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '@firebase/auth';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { AuthService } from 'src/app/core/auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor() {}
+  user$: Observable<User | null> = this.auth.user$;
+  constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user$.pipe(tap((user) => console.log('NAVBAR', user))).subscribe();
+  }
 }

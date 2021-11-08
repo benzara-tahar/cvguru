@@ -177,40 +177,25 @@
         </a>
       </nav>
       <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-        <a
-          [routerLink]="['/login']"
-          class="
-            whitespace-nowrap
-            text-base
-            font-medium
-            text-white
-            hover:text-green-100
-          "
-        >
-          Sign in
-        </a>
-        <!-- <a
-          [routerLink]="['/']"
-          class="
-            ml-8
-            whitespace-nowrap
-            inline-flex
-            items-center
-            justify-center
-            px-4
-            py-2
-            border border-transparent
-            rounded-md
-            shadow-sm
-            text-base
-            font-medium
-            text-white
-            bg-yellow-600
-            hover:bg-yellow-700
-          "
-        >
-          Create Your Resume
-        </a> -->
+        <ng-template #signInTpl>
+          <a
+            [routerLink]="['/login']"
+            class="
+              whitespace-nowrap
+              text-base
+              font-medium
+              text-white
+              hover:text-green-100
+            "
+          >
+            Sign in
+          </a>
+        </ng-template>
+        <app-user-menu
+          *ngIf="user$ | async as user; else signInTpl"
+          [user]="user"
+        ></app-user-menu>
+
         <app-dark-theme-toggle></app-dark-theme-toggle>
       </div>
     </div>
