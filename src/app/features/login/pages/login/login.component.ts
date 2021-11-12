@@ -32,13 +32,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   loginUser() {
-    console.log(
-      '%cMyProject%cline:31%cvar',
-      'color:#fff;background:#ee6f57;padding:3px;border-radius:2px',
-      'color:#fff;background:#1f3c88;padding:3px;border-radius:2px',
-      'color:#fff;background:rgb(153, 80, 84);padding:3px;border-radius:2px',
-      this.loginForm.value
-    );
     if (this.loginForm.invalid) return;
 
     const email = this.loginForm.value.email;
@@ -48,14 +41,14 @@ export class LoginComponent implements OnInit {
       .loginWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result);
-        if (result == null) {
-          // null is success, false means there was an error
-          console.log('logging in...');
-          this.router.navigate(['/']); // when the user is logged in, navigate them to dashboard
-        } else if (result.user == null) {
+        if (result.user == null) {
           console.log('login error', result);
           this.firebaseErrorMessage = 'something wrong';
+          return;
         }
+
+        console.log('logging in...');
+        this.router.navigate(['/']); // when the user is logged in, navigate them to dashboard
       })
       .catch((error) => {
         console.log('login error', error);

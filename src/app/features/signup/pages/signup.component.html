@@ -1,0 +1,151 @@
+<div
+  class="flex items-center justify-center w-full min-h-screen  bg-gradient-to-tl from-green-100 via-green-300 to-green-400"
+>
+  <div
+    class="flex flex-1 max-w-sm overflow-hidden bg-white rounded-lg shadow-lg  dark:bg-gray-800 lg:max-w-4xl"
+  >
+    <div
+      class="hidden bg-cover lg:block lg:w-1/2"
+      style="
+        background-image: url('https://images.unsplash.com/photo-1606660265514-358ebbadc80d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1575&q=80');
+      "
+    ></div>
+
+    <div class="w-full px-6 py-8 md:px-8 lg:w-1/2">
+      <h2
+        class="text-2xl font-semibold text-center text-gray-700 dark:text-white"
+      >
+        CV GURRU
+      </h2>
+
+      <p class="text-xl text-center text-gray-600 dark:text-gray-200">
+        Create your account
+      </p>
+
+      <div class="flex items-center justify-between mt-4">
+        <span class="w-1/5 border-b dark:border-gray-600 lg:w-1/4"></span>
+
+        <!-- <a
+          class="text-xs text-center text-gray-500 uppercase dark:text-gray-400 hover:underline"
+          >or login with email</a
+        > -->
+
+        <span class="w-1/5 border-b dark:border-gray-400 lg:w-1/4"></span>
+      </div>
+      <form [formGroup]="signupForm" (ngSubmit)="registerUser()">
+        <!-- firstname -->
+        <div class="relative mt-4">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-600  dark:text-gray-200"
+            for="LoggingFirstName"
+            >FirstName</label
+          >
+          <input
+            [formControlName]="'firstname'"
+            id="LoggingFirstName"
+            class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            type="firstname"
+          />
+          <p
+            *ngIf="firstname?.touched && firstname?.hasError('required')"
+            class="absolute text-xs text-red-500 -bottom-4"
+          >
+            FirstName is required
+          </p>
+        </div>
+        <!-- lastname -->
+        <div class="relative mt-4">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-600  dark:text-gray-200"
+            for="LoggingLastName"
+            >LastName</label
+          >
+          <input
+            [formControlName]="'lastname'"
+            id="LoggingLastName"
+            class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            type="lastname"
+          />
+          <p
+            *ngIf="lastname?.touched && lastname?.hasError('required')"
+            class="absolute text-xs text-red-500 -bottom-4"
+          >
+            LastName is required
+          </p>
+        </div>
+
+        <!-- email -->
+        <div class="relative mt-4">
+          <label
+            class="block mb-2 text-sm font-medium text-gray-600  dark:text-gray-200"
+            for="LoggingEmailAddress"
+            >Email Address</label
+          >
+          <input
+            [formControlName]="'email'"
+            id="LoggingEmailAddress"
+            class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            type="email"
+          />
+          <p
+            *ngIf="email?.touched && email?.hasError('required')"
+            class="absolute text-xs text-red-500 -bottom-4"
+          >
+            Email is required
+          </p>
+          <p
+            *ngIf="email?.touched && email?.hasError('email')"
+            class="absolute text-xs text-red-500 -bottom-4"
+          >
+            Email is invalid
+          </p>
+        </div>
+        <!-- password -->
+        <div class="relative mt-4">
+          <div class="flex justify-between">
+            <label
+              class="block mb-2 text-sm font-medium text-gray-600  dark:text-gray-200"
+              for="loggingPassword"
+              >Password</label
+            >
+          </div>
+
+          <input
+            [formControlName]="'password'"
+            id="loggingPassword"
+            class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md  dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            type="password"
+          />
+          <p
+            *ngIf="password?.touched && password?.hasError('required')"
+            class="absolute text-xs text-red-500 -bottom-4"
+          >
+            Password is required
+          </p>
+        </div>
+
+        <!-- login button -->
+        <div class="mt-8">
+          <button
+            type="submit"
+            class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded  hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+
+      <div class="flex items-center justify-between mt-4">
+        <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+
+        <a
+          [routerLink]="['/login']"
+          class="text-xs text-gray-500 uppercase  dark:text-gray-400 hover:underline"
+          >or log in</a
+        >
+
+        <span class="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
+      </div>
+    </div>
+  </div>
+</div>

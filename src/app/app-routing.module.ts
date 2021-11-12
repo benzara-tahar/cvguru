@@ -53,6 +53,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./features/error/error.module').then((m) => m.ErrorModule),
   },
+  {
+    path: 'signup',
+    loadChildren: () =>
+      import('./features/signup/signup.module').then((m) => m.SignupModule),
+  },
   { path: '**', redirectTo: '/error/404' },
 ];
 
