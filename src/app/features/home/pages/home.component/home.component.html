@@ -1,21 +1,21 @@
 <section class="bg-green-500 dark:bg-green-500">
   <div
-    class="text-center w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20"
+    class="z-20 w-full px-4 py-12 mx-auto text-center sm:px-6 lg:py-16 lg:px-8"
   >
     <h2 class="text-3xl text-white sm:text-4xl">
       <span class="block font-bold">
         Create your professional Resume with CV maker
       </span>
     </h2>
-    <p class="text-lg mt-4 max-w-md mx-auto text-gray-100">
+    <p class="max-w-md mx-auto mt-4 text-lg text-gray-100">
       Create your very own professional Resume and download it within 15
       minutes.
     </p>
     <div class="lg:mt-0 lg:flex-shrink-0">
-      <div class="mt-12 inline-flex rounded-md shadow">
+      <div class="inline-flex mt-12 rounded-md shadow">
         <button
           type="button"
-          class="gurru-btn primary shadow-md font-semibold py-4"
+          class="py-4 font-semibold shadow-md gurru-btn primary"
         >
           Create your Resume
         </button>
@@ -33,4 +33,6 @@
 <!--  companies  -->
 <app-companies></app-companies>
 <!-- benifits and link to CV Creation -->
+<app-spacer [type]="'layered-peaks'" [flip]="false"></app-spacer>
 <app-benifits></app-benifits>
+<app-spacer [type]="'layered-peaks'" [flip]="true"></app-spacer>
