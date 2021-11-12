@@ -6,9 +6,11 @@ import { HomeComponent } from './pages/home.component/home.component';
 import { FeaturesComponent } from './components/features/features.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CompaniesComponent } from './components/companies/companies.component';
+import { BenifitsComponent } from './components/benifits/benifits.component';
 
 @NgModule({
-  declarations: [HomeComponent, FeaturesComponent, TestimonialsComponent],
+  declarations: [HomeComponent, FeaturesComponent, TestimonialsComponent, CompaniesComponent, BenifitsComponent],
   imports: [CommonModule, HomeRoutingModule, SharedModule],
 })
 export class HomeModule {}
