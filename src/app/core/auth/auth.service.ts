@@ -16,6 +16,7 @@ import {
 } from '@angular/fire/auth';
 import { EMPTY, Observable, Subscription } from 'rxjs';
 import {
+  createUserWithEmailAndPassword,
   FacebookAuthProvider,
   signInWithEmailAndPassword,
   TwitterAuthProvider,
@@ -54,5 +55,13 @@ export class AuthService {
 
   async logout() {
     return await signOut(this.auth);
+  }
+
+  async register(user: any) {
+    return await createUserWithEmailAndPassword(
+      this.auth,
+      user.email,
+      user.password
+    );
   }
 }
