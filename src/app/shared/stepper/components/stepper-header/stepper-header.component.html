@@ -1,0 +1,14 @@
+<div class="p-5">
+  <div class="p-4 mx-4">
+    <div class="flex items-center">
+      <ng-container *ngFor="let item of items; last as isLast">
+        <app-stepper-item [item]="item"> </app-stepper-item>
+        <div
+          *ngIf="!isLast"
+          [class.activeItem]="item.active"
+          class="flex-auto transition duration-500 ease-in-out border-t-2 border-gray-300 "
+        ></div>
+      </ng-container>
+    </div>
+  </div>
+</div>
