@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cv-builder.component.scss']
 })
 export class CvBuilderComponent implements OnInit {
-  items :any []=[{text:"Personal",active:"true"},{text:"Exprience",active:"false"},{text:"Template",active:"false"}]
+  items :any []=[{text:"Personal",active:true},{text:"Exprience",active:false},{text:"Template",active:false}]
 
   constructor() { }
 
