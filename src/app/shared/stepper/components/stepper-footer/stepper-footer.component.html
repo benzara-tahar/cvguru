@@ -2,6 +2,7 @@
   <div class="p-6">
     <div class="flex p-2 mt-4">
       <button
+        (click)="clickPrevious()"
         class="px-6 py-3 mb-1 mr-1 text-sm font-bold text-gray-800 uppercase transition-all duration-150 ease-linear bg-gray-200 rounded shadow outline-none  active:bg-purple-600 hover:shadow-lg focus:outline-none"
         type="button"
       >
@@ -9,10 +10,11 @@
       </button>
       <div class="flex flex-row-reverse flex-auto">
         <button
+          (click)="clickNext()"
           class="px-6 py-3 mx-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-purple-500 rounded shadow outline-none  active:bg-purple-600 hover:shadow-lg focus:outline-none"
           type="button"
         >
-          Next
+          Next {{ currentStep }}
         </button>
         <button
           class="px-6 py-3 mb-1 mr-1 text-sm font-bold text-purple-500 uppercase transition-all duration-150 ease-linear bg-transparent border border-purple-500 border-solid rounded outline-none  hover:bg-purple-500 hover:text-white active:bg-purple-600 focus:outline-none"

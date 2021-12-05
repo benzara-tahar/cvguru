@@ -12,5 +12,7 @@ export class CvBuilderComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  validateOnNext(event: any) {
+      
+  }
 }
