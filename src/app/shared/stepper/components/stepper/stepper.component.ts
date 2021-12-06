@@ -10,6 +10,10 @@ import { StepperService } from '../../stepper.service';
 import { StepComponent } from '../step/step.component';
 import { Subscription } from 'rxjs';
 
+export interface StepDef {
+  title: string;
+  icon: string;
+}
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
@@ -17,7 +21,7 @@ import { Subscription } from 'rxjs';
 })
 export class StepperComponent implements OnInit, AfterContentInit {
   @ContentChildren(StepComponent) steps!: QueryList<StepComponent>;
-  @Input() items: any;
+  items: StepDef[] = [];
   currentStep: number = 0;
   subscription: Subscription;
   constructor(private stepperService: StepperService) {
@@ -29,7 +33,6 @@ export class StepperComponent implements OnInit, AfterContentInit {
 
   updateStepsVisibility() {
     let steps = this.steps.toArray();
-    console.log(`ngAfterContentInit - jokeContentChild is:`, steps);
     const currentStep = this.steps.get(this.currentStep);
     if (currentStep == null) {
       return;
@@ -50,6 +53,9 @@ export class StepperComponent implements OnInit, AfterContentInit {
   }
   ngAfterContentInit() {
     this.updateStepsVisibility();
-    //steps[this.currentStep].style.backgroundColor = 'yellow';
+
+    this.items = this.steps
+      .toArray()
+      .map((e) => ({ title: e.title, icon: e.icon }));
   }
 }

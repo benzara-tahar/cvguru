@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-step',
@@ -7,7 +7,8 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 })
 export class StepComponent implements OnInit {
   constructor(private ref: ElementRef) {}
-
+  @Input() title!: string;
+  @Input() icon!: string;
   ngOnInit(): void {}
 
   show() {
