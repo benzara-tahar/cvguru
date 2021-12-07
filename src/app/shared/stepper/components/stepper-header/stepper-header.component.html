@@ -1,10 +1,22 @@
 <div class="p-10 md:mx-40">
   <div class="flex items-center">
     <ng-container *ngFor="let item of items; last as isLast">
-      <app-stepper-item [item]="item"> </app-stepper-item>
+      <div class="relative flex items-center text-purple-500">
+        <!-- [ngClass]="{ activeItem: item.active }" -->
+        <div
+          class="w-12 h-12 py-3 transition duration-500 ease-in-out border-2 border-purple-500 rounded-full "
+        >
+          <img src="{{ item.icon }}" height="100%" width="100%" />
+        </div>
+        <div
+          class="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-purple-500 uppercase "
+        >
+          {{ item.title }}
+        </div>
+      </div>
       <div
         *ngIf="!isLast"
-        [class.activeItem]="item.active"
+        [class.activeItem]="true"
         class="flex-auto transition duration-500 ease-in-out border-t-2 border-gray-300 "
       ></div>
     </ng-container>

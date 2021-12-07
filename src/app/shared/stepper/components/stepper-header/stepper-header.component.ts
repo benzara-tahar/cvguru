@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { StepDef } from '../stepper/stepper.component';
 
 @Component({
   selector: 'app-stepper-header',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./stepper-header.component.scss']
 })
 export class StepperHeaderComponent implements OnInit {
-  @Input() items:any
+  @Input() items !:StepDef[]
   constructor() { }
 
   ngOnInit(): void {
