@@ -1,22 +1,24 @@
 <div class="p-10 md:mx-40">
   <div class="flex items-center">
-    <ng-container *ngFor="let item of items; last as isLast">
+    <ng-container *ngFor="let item of items; last as isLast; index as i">
       <div class="relative flex items-center text-purple-500">
         <!-- [ngClass]="{ activeItem: item.active }" -->
         <div
-          class="flex items-center justify-center w-12 h-12 py-3 transition duration-500 ease-in-out border-2 border-purple-500 rounded-full "
+          [class.activeItem]="currentStep >= i"
+          class="flex items-center justify-center w-12 h-12 py-3 transition duration-500 ease-in-out border-2 border-gray-400 rounded-full "
         >
-          <img src="{{ item.icon }}" height="32" width="32" />
+          <img src="{{ item.icon }}" height="28" width="28" />
         </div>
         <div
-          class="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-purple-500 uppercase "
+          [class.activeItem]="currentStep >= i"
+          class="absolute top-0 w-32 mt-16 -ml-10 text-xs font-medium text-center text-gray-600 uppercase "
         >
           {{ item.title }}
         </div>
       </div>
       <div
         *ngIf="!isLast"
-        [class.activeItem]="true"
+        [class.activeItem]="currentStep > i"
         class="flex-auto transition duration-500 ease-in-out border-t-2 border-gray-300 "
       ></div>
     </ng-container>

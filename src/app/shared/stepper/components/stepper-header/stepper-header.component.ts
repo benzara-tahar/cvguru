@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { StepDef } from '../stepper/stepper.component';
+import { StepperService } from '../../stepper.service';
 
 @Component({
   selector: 'app-stepper-header',
@@ -7,9 +9,23 @@ import { StepDef } from '../stepper/stepper.component';
   styleUrls: ['./stepper-header.component.scss']
 })
 export class StepperHeaderComponent implements OnInit {
-  @Input() items !:StepDef[]
-  constructor() { }
+  currentStep: number = 0;
+  subscription: Subscription;
 
-  ngOnInit(): void {
+  @Input() items !:StepDef[]
+
+  constructor(private stepperService: StepperService) {
+    this.subscription = this.stepperService.onChange().subscribe((value) => {
+      this.currentStep = value;
+    });
   }
-}
+  ngOnInit(): void {
+    
+  }
+  ngOnDestroy() {
+    // Unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
+
+}  
+
