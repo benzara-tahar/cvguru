@@ -1,18 +1,43 @@
 <div class="container px-5 mx-auto">
   <app-stepper>
-    <app-step title="Step 0" icon="/assets/images/svg/step0.svg">
-      <label class="block">
-        <span class="text-gray-700">Step 1</span>
-        <input class="block w-full mt-1 form-input" placeholder="Jane Doe" />
-      </label>
+    <app-step title="Personal" icon="/assets/images/svg/step0.svg">
+      <form [formGroup]="profileForm">
+        <label for="first-name">First Name* </label>
+        <div class="pt-0 mb-3">
+          <input
+            required
+            id="first-name"
+            formControlName="firstName"
+            type="text"
+            placeholder=""
+            class="relative w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border border-gray-400 rounded outline-none  focus:outline-none focus:ring"
+          />
+          <div *ngIf="profileForm.firstName.errors?.['required']">
+            Name is required.
+          </div>
+        </div>
+
+        <label for="first-name">Last Name* </label>
+        <div class="pt-0 mb-3">
+          <input
+            id="last-name"
+            formControlName="lastName"
+            type="text"
+            placeholder=""
+            class="relative w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border border-gray-400 rounded outline-none  focus:outline-none focus:ring"
+          />
+        </div>
+      </form>
     </app-step>
-    <app-step title="Step 1" icon="/assets/images/svg/step1.svg">
+
+    <app-step title="Experiences" icon="/assets/images/svg/step1.svg">
       <label class="block">
         <span class="text-gray-700">Step 2</span>
         <input class="block w-full mt-1 form-input" placeholder="Jane Doe" />
       </label>
     </app-step>
-    <app-step title="Step 2" icon="/assets/images/svg/step2.svg">
+
+    <app-step title="Template" icon="/assets/images/svg/step2.svg">
       <label class="block">
         <span class="text-gray-700">Step 3</span>
         <input class="block w-full mt-1 form-input" placeholder="Jane Doe" />
