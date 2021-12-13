@@ -2,18 +2,31 @@
   <app-stepper>
     <app-step title="Personal" icon="/assets/images/svg/step0.svg">
       <form [formGroup]="profileForm">
-        <label for="first-name">First Name* </label>
+        <label for="firstName">First Name* </label>
         <div class="pt-0 mb-3">
           <input
             required
-            id="first-name"
+            id="firstName"
             formControlName="firstName"
             type="text"
             placeholder=""
+            [ngClass]="{
+              'border-red-600':
+                profileForm.controls.firstName.invalid &&
+                profileForm.controls.firstName.touched
+            }"
             class="relative w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border border-gray-400 rounded outline-none  focus:outline-none focus:ring"
           />
-          <div *ngIf="profileForm.firstName.errors?.['required']">
-            Name is required.
+          <div
+            class="text-red-600"
+            *ngIf="
+              profileForm.controls.firstName.errors &&
+              profileForm.controls.firstName.touched
+            "
+          >
+            <small *ngIf="profileForm.controls.firstName.errors.required">
+              First name is required.</small
+            >
           </div>
         </div>
 
@@ -24,8 +37,24 @@
             formControlName="lastName"
             type="text"
             placeholder=""
+            [ngClass]="{
+              'border-red-600':
+                profileForm.controls.lastName.invalid &&
+                profileForm.controls.lastName.touched
+            }"
             class="relative w-full px-3 py-3 text-sm text-gray-600 placeholder-gray-400 bg-white border border-gray-400 rounded outline-none  focus:outline-none focus:ring"
           />
+          <div
+            class="text-red-600"
+            *ngIf="
+              profileForm.controls.lastName.errors &&
+              profileForm.controls.lastName.touched
+            "
+          >
+            <small *ngIf="profileForm.controls.lastName.errors.required">
+              Last name is required.</small
+            >
+          </div>
         </div>
       </form>
     </app-step>

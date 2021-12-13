@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { StepperService } from '../../stepper.service';
 import { Subscription } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class StepperFooterComponent implements OnInit {
   currentStep: number = 0;
+  @Output() canGoNext : EventEmitter<number> = new EventEmitter();
   subscription: Subscription;
   constructor(private stepperService: StepperService) {
     this.subscription = this.stepperService
@@ -24,6 +25,7 @@ export class StepperFooterComponent implements OnInit {
   }
 
   clickNext() {
+    let canGoNext
     this.stepperService.nextStep();
   }
   clickPrevious() {

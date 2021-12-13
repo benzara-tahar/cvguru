@@ -5,7 +5,7 @@
             fill="none"
             viewBox="0 0 24 24"
             stroke="rgba(107, 114, 128)"
-            stroke-width="2"
+            stroke-width="1"
             stroke-linecap="round"
             stroke-linejoin="round"
             class="feather feather-bookmark"
