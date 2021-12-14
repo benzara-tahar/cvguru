@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit,ContentChildren, QueryList, AfterViewInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
 
 @Component({
   selector: 'app-cv-builder',
@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class CvBuilderComponent implements OnInit, AfterViewInit {
 
-  @ViewChildren(FormGroup) forms!: QueryList<FormGroup>;
+  @ContentChildren("form") forms!: QueryList<any>;
   profileForm!: FormGroup;
  
   constructor() {}
@@ -29,7 +29,16 @@ export class CvBuilderComponent implements OnInit, AfterViewInit {
   validateOnNext(event: any) {}
   
   valideStep(stepNum: number):boolean{
-    let form = this.forms.toArray();
-    return form[stepNum].valid
+    switch (stepNum){
+      case 0:
+        return this.profileForm.valid;
+      case 1:
+        return true;
+      case 3:
+        return false;
+        default: return false
+    }
+      
+
   }
 }

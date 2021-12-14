@@ -3,6 +3,8 @@ import {
   OnInit,
   ContentChildren,
   Input,
+  EventEmitter,
+  Output,
   QueryList,
   AfterContentInit,
 } from '@angular/core';
@@ -20,10 +22,14 @@ export interface StepDef {
   styleUrls: ['./stepper.component.scss'],
 })
 export class StepperComponent implements OnInit, AfterContentInit {
+
+  @Output() canGoNext : EventEmitter<number> = new EventEmitter();
   @ContentChildren(StepComponent) steps!: QueryList<StepComponent>;
+
   items: StepDef[] = [];
   currentStep: number = 0;
   subscription: Subscription;
+  
   constructor(private stepperService: StepperService) {
     this.subscription = this.stepperService.onChange().subscribe((value) => {
       this.currentStep = value;
@@ -57,5 +63,12 @@ export class StepperComponent implements OnInit, AfterContentInit {
     this.items = this.steps
       .toArray()
       .map((e) => ({ title: e.title, icon: e.icon }));
+  }
+   clickNext(){
+      console.log("its here right here ")
+      let res
+       this.canGoNext.emit(this.currentStep)
+      // this.canGoNext.subscribe({func:(data_form_parent)=>{console.log(data_form_parent)}})
+      
   }
 }

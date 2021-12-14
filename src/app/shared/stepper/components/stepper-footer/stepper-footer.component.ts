@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class StepperFooterComponent implements OnInit {
   currentStep: number = 0;
-  @Output() canGoNext : EventEmitter<number> = new EventEmitter();
+  @Output() canGoNext  = new EventEmitter();
   subscription: Subscription;
   constructor(private stepperService: StepperService) {
     this.subscription = this.stepperService
@@ -25,7 +25,7 @@ export class StepperFooterComponent implements OnInit {
   }
 
   clickNext() {
-    let canGoNext
+    let canGoNext=this.canGoNext.emit(this.currentStep)
     this.stepperService.nextStep();
   }
   clickPrevious() {
