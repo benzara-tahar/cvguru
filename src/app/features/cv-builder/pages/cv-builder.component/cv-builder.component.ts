@@ -27,6 +27,7 @@ export class CvBuilderComponent implements OnInit {
   validateStep=(stepNum: number)=>{
     switch (stepNum){
       case 0:
+        this.profileForm.markAllAsTouched()
         return (this.profileForm.valid);
       case 1:
         return true;

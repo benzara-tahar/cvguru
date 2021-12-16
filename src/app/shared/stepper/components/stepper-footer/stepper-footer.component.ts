@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter } from '@angular/core';
 import { StepperService } from '../../stepper.service';
 import { Subscription } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class StepperFooterComponent implements OnInit {
   currentStep: number = 0;
-  @Output() canGoNext  = new EventEmitter();
+  @Input() canGoNext !: () => boolean;
   subscription: Subscription;
   constructor(private stepperService: StepperService) {
     this.subscription = this.stepperService
@@ -25,8 +25,8 @@ export class StepperFooterComponent implements OnInit {
   }
 
   clickNext() {
-    let isValid=this.canGoNext.emit()
-    if (Boolean(isValid)){
+    let isValid=this.canGoNext()
+    if (isValid){
       this.stepperService.nextStep();
     }
   }

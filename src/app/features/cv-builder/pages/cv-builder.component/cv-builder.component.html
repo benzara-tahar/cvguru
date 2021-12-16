@@ -2,7 +2,7 @@
   <app-stepper [canGoNext]="validateStep">
     <app-step title="Personal" icon="/assets/images/svg/step0.svg">
       <form [formGroup]="profileForm">
-        <label for="firstName">First Name* </label>
+        <label for="firstName" class="required">First Name * </label>
         <div class="pt-0 mb-3">
           <input
             required
@@ -30,7 +30,7 @@
           </div>
         </div>
 
-        <label for="first-name">Last Name* </label>
+        <label for="first-name">Last Name * </label>
         <div class="pt-0 mb-3">
           <input
             id="last-name"

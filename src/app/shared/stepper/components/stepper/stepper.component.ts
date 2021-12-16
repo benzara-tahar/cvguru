@@ -66,9 +66,8 @@ export class StepperComponent implements OnInit, AfterContentInit {
       .toArray()
       .map((e) => ({ title: e.title, icon: e.icon }));
   }
-   clickNext(){
+   clickNext=()=>{
       let result= this.canGoNext(this.currentStep)
-      console.log("its here right here "+result)
-      // this.canGoNext.subscribe({func:(data_form_parent)=>{console.log(data_form_parent)}})  
+      return result
   }
 }
