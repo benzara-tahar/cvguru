@@ -1,4 +1,4 @@
-import { Component, OnInit,ContentChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
 
 @Component({
@@ -6,39 +6,33 @@ import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
   templateUrl: './cv-builder.component.html',
   styleUrls: ['./cv-builder.component.scss'],
 })
-export class CvBuilderComponent implements OnInit, AfterViewInit {
+export class CvBuilderComponent implements OnInit {
 
-  @ContentChildren("form") forms!: QueryList<any>;
-  profileForm!: FormGroup;
- 
+  profileForm: FormGroup= new FormGroup({
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+  })
+
   constructor() {}
 
-  ngOnInit(): void {
-    this.profileForm = new FormGroup({
-      firstName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
-      lastName: new FormControl('', [
-        Validators.required,
-        Validators.minLength(2),
-      ]),
-    });
-  }
-  ngAfterViewInit(){}
-  validateOnNext(event: any) {}
+  ngOnInit(): void {}
+
   
-  valideStep(stepNum: number):boolean{
+  validateStep=(stepNum: number)=>{
     switch (stepNum){
       case 0:
-        return this.profileForm.valid;
+        return (this.profileForm.valid);
       case 1:
         return true;
       case 3:
         return false;
         default: return false
     }
-      
-
   }
 }

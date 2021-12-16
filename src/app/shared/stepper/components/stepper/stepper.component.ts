@@ -23,7 +23,7 @@ export interface StepDef {
 })
 export class StepperComponent implements OnInit, AfterContentInit {
 
-  @Output() canGoNext : EventEmitter<number> = new EventEmitter();
+  @Input() canGoNext!: (step: any) => boolean;
   @ContentChildren(StepComponent) steps!: QueryList<StepComponent>;
 
   items: StepDef[] = [];
@@ -39,6 +39,8 @@ export class StepperComponent implements OnInit, AfterContentInit {
 
   updateStepsVisibility() {
     let steps = this.steps.toArray();
+    let numberSteps=steps.length
+    this.stepperService.setNumberSteps(numberSteps)
     const currentStep = this.steps.get(this.currentStep);
     if (currentStep == null) {
       return;
@@ -65,10 +67,8 @@ export class StepperComponent implements OnInit, AfterContentInit {
       .map((e) => ({ title: e.title, icon: e.icon }));
   }
    clickNext(){
-      console.log("its here right here ")
-      let res
-       this.canGoNext.emit(this.currentStep)
-      // this.canGoNext.subscribe({func:(data_form_parent)=>{console.log(data_form_parent)}})
-      
+      let result= this.canGoNext(this.currentStep)
+      console.log("its here right here "+result)
+      // this.canGoNext.subscribe({func:(data_form_parent)=>{console.log(data_form_parent)}})  
   }
 }

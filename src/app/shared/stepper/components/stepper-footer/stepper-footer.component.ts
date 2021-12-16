@@ -25,8 +25,10 @@ export class StepperFooterComponent implements OnInit {
   }
 
   clickNext() {
-    let canGoNext=this.canGoNext.emit(this.currentStep)
-    this.stepperService.nextStep();
+    let isValid=this.canGoNext.emit()
+    if (Boolean(isValid)){
+      this.stepperService.nextStep();
+    }
   }
   clickPrevious() {
     this.stepperService.previousStep();

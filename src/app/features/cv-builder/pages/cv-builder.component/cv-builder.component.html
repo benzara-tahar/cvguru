@@ -1,7 +1,7 @@
 <div class="container px-5 mx-auto">
-  <app-stepper (canGoNext)="valideStep($event)">
+  <app-stepper [canGoNext]="validateStep">
     <app-step title="Personal" icon="/assets/images/svg/step0.svg">
-      <form [formGroup]="profileForm" #form>
+      <form [formGroup]="profileForm">
         <label for="firstName">First Name* </label>
         <div class="pt-0 mb-3">
           <input
